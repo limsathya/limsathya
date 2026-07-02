@@ -2,6 +2,7 @@ import "./globals.css";
 import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono, Noto_Serif_SC, Noto_Serif_Khmer } from "next/font/google";
 import { LanguageProvider } from "@/components/language-provider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Limsathya San — Medical student, builder, photographer",
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
