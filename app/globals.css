@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Make form elements inherit the body font so custom fonts apply everywhere */
+  input,
+  textarea,
+  button,
+  select,
+  optgroup {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+  }
+}
+
+/* ============================================================
+   MISANS — LAZY WEIGHTS
+   Only Regular (400) and Bold (700) preload via next/font/local.
+   These @font-face rules let other weights download on demand
+   when used with font-weight: 100/200/300/400/500/600/900.
+   ============================================================ */
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MiSans Fallback";
+  src: url("/fonts/MiSans-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   THEME TOKENS
+   Default = dark ("beacon at night").
+   Light tokens apply when the system prefers light (no manual
+   override) OR when data-theme="light" is set explicitly.
+   ============================================================ */
+
+:root {
+  /* themeable surfaces + text (space-separated RGB channels) */
+  --bg: 11 16 32;
+  --surface: 18 26 48;
+  --surface-2: 28 39 70;
+  --line: 36 49 86;
+  --paper: 243 238 228;
+  --foreground: 232 230 223;
+  --mist: 147 164 196;
+  --mist-dim: 126 142 178;
+  --accent-ink: 246 162 60;
+
+  /* hero name gradient stops */
+  --hero-a: #ffe3b0;
+  --hero-b: #f6a23c;
+  --hero-c: #e5552e;
+
+  /* shadcn semantic tokens (dark) */
+  --background: #0b1020;
+  --card: #121a30;
+  --card-foreground: #f3eee4;
+  --popover: #121a30;
+  --popover-foreground: #f3eee4;
+  --primary: #f6a23c;
+  --primary-foreground: #1a0f06;
+  --secondary: #1c2746;
+  --secondary-foreground: #e8e6df;
+  --muted: #121a30;
+  --muted-foreground: #93a4c4;
+  --accent: #1c2746;
+  --accent-foreground: #ffe3b0;
+  --destructive: #e5552e;
+  --destructive-foreground: #1a0f06;
+  --border: #243156;
+  --input: #243156;
+  --ring: #f6a23c;
+  --radius: 0.75rem;
+
+  color-scheme: dark;
+}
+
+/* ---- LIGHT tokens (shared by system-light fallback + manual light) ---- */
+:root[data-theme="light"] {
+  --bg: 245 239 228;
+  --surface: 252 250 245;
+  --surface-2: 240 233 219;
+  --line: 226 216 200;
+  --paper: 27 36 64;
+  --foreground: 42 51 80;
+  --mist: 94 107 134;
+  --mist-dim: 138 147 168;
+  --accent-ink: 168 64 28;
+
+  --hero-a: #e5552e;
+  --hero-b: #c2410c;
+  --hero-c: #9a3412;
+
+  --background: #f5efe4;
+  --card: #fcfaf5;
+  --card-foreground: #1b2440;
+  --popover: #fcfaf5;
+  --popover-foreground: #1b2440;
+  --primary: #f6a23c;
+  --primary-foreground: #1a0f06;
+  --secondary: #f0e9db;
+  --secondary-foreground: #2a3350;
+  --muted: #f0e9db;
+  --muted-foreground: #5e6b86;
+  --accent: #f0e9db;
+  --accent-foreground: #a8401c;
+  --destructive: #e5552e;
+  --destructive-foreground: #ffffff;
+  --border: #e2d8c8;
+  --input: #e2d8c8;
+  --ring: #f6a23c;
+
+  color-scheme: light;
+}
+
+/* System prefers light AND user hasn't forced dark → use light tokens */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: 245 239 228;
+    --surface: 252 250 245;
+    --surface-2: 240 233 219;
+    --line: 226 216 200;
+    --paper: 27 36 64;
+    --foreground: 42 51 80;
+    --mist: 94 107 134;
+    --mist-dim: 138 147 168;
+    --accent-ink: 168 64 28;
+
+    --hero-a: #e5552e;
+    --hero-b: #c2410c;
+    --hero-c: #9a3412;
+
+    --background: #f5efe4;
+    --card: #fcfaf5;
+    --card-foreground: #1b2440;
+    --popover: #fcfaf5;
+    --popover-foreground: #1b2440;
+    --primary: #f6a23c;
+    --primary-foreground: #1a0f06;
+    --secondary: #f0e9db;
+    --secondary-foreground: #2a3350;
+    --muted: #f0e9db;
+    --muted-foreground: #5e6b86;
+    --accent: #f0e9db;
+    --accent-foreground: #a8401c;
+    --destructive: #e5552e;
+    --destructive-foreground: #ffffff;
+    --border: #e2d8c8;
+    --input: #e2d8c8;
+    --ring: #f6a23c;
+
+    color-scheme: light;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  background-image:
+    radial-gradient(1100px 560px at 50% -10%, rgba(36, 49, 86, 0.85), transparent 70%),
+    radial-gradient(900px 500px at 90% 110%, rgba(229, 85, 46, 0.1), transparent 60%),
+    url("/noise-dark.svg");
+  background-attachment: fixed;
+}
+
+/* Lighter ambient wash for light theme */
+:root[data-theme="light"] body,
+.light-bg body {
+  background-image:
+    radial-gradient(1100px 560px at 50% -10%, rgba(246, 162, 60, 0.12), transparent 70%),
+    radial-gradient(900px 520px at 90% 110%, rgba(229, 85, 46, 0.07), transparent 60%),
+    url("/noise-light.svg");
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) body {
+    background-image:
+      radial-gradient(1100px 560px at 50% -10%, rgba(246, 162, 60, 0.12), transparent 70%),
+      radial-gradient(900px 520px at 90% 110%, rgba(229, 85, 46, 0.07), transparent 60%),
+      url("/noise-light.svg");
+  }
+}
+
+section {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: rgba(246, 162, 60, 0.25);
+  color: #ffe3b0;
+}
+
+/* Hero name — themeable gradient text */
+.hero-name {
+  background-image: linear-gradient(to bottom, var(--hero-a), var(--hero-b), var(--hero-c));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Smooth crossfade applied only during a manual theme switch */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease,
+    fill 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
