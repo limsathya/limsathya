@@ -47,11 +47,11 @@ module.exports = {
         onAccent: "#1A0F06",
       },
       fontFamily: {
-        display: ["var(--font-misans)"],
-        sans:    ["var(--font-misans)"],
-        mono:    ["var(--font-misans)"],
-        sc:      ["var(--font-misans)"],
-        khmer:   ["var(--font-misans)"],
+        display: ['"MiSans"'],
+        sans:    ['"MiSans"'],
+        mono:    ['"MiSans"'],
+        sc:      ['"MiSans"'],
+        khmer:   ['"MiSans"'],
       },
       keyframes: {
         breathe: {
