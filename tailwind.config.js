@@ -47,11 +47,13 @@ module.exports = {
         onAccent: "#1A0F06",
       },
       fontFamily: {
-        display: ["var(--font-misans)", "MiSans Fallback", "system-ui", "sans-serif"],
-        sans: ["var(--font-misans)", "MiSans Fallback", "system-ui", "sans-serif"],
-        mono: ["var(--font-misans)", "MiSans Fallback", "monospace"],
-        sc: ["var(--font-misans)", "MiSans Fallback", "system-ui", "sans-serif"],
-        khmer: ["var(--font-misans)", "MiSans Fallback", "system-ui", "sans-serif"],
+        // MiSans covers Latin + CJK.  Khmer text uses a separate stack
+        // that falls through to OS-native Khmer fonts when MiSans lacks glyphs.
+        display: ["var(--font-misans)", "system-ui", "sans-serif"],
+        sans:    ["var(--font-misans)", "system-ui", "sans-serif"],
+        mono:    ["var(--font-misans)", "monospace"],
+        sc:      ["var(--font-misans)", "PingFang SC", "Microsoft YaHei", "system-ui", "sans-serif"],
+        khmer:   ["var(--font-khmer)", "Khmer Fallback", "Noto Sans Khmer", "Khmer OS", "Leelawadee UI", "sans-serif"],
       },
       keyframes: {
         breathe: {

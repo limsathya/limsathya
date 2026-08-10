@@ -9,18 +9,36 @@ export const metadata = {
     "Limsathya San (陕炎烽 · សាន្ត លីមសត្យា) — a Cambodian medical student in Kunming who builds software, makes photographs, and creates across Khmer, Chinese, and English.",
 };
 
-// MiSans — one font for English, Chinese, and Khmer.
-// Only Regular + Bold preload to keep first paint fast;
-// other weights load lazily via CSS font-face descriptors.
+// MiSans — covers Latin + CJK.  Only Regular + Bold preload for fast first paint;
+// other weights load on demand through the same font family.
 const misans = localFont({
   src: [
-    { path: "../public/fonts/MiSans-Regular.ttf", weight: "400", style: "normal" },
-    { path: "../public/fonts/MiSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../public/fonts/MiSans-Thin.ttf",        weight: "100", style: "normal" },
+    { path: "../public/fonts/MiSans-ExtraLight.ttf",  weight: "200", style: "normal" },
+    { path: "../public/fonts/MiSans-Light.ttf",       weight: "300", style: "normal" },
+    { path: "../public/fonts/MiSans-Regular.ttf",     weight: "400", style: "normal" },
+    { path: "../public/fonts/MiSans-Medium.ttf",      weight: "500", style: "normal" },
+    { path: "../public/fonts/MiSans-Semibold.ttf",    weight: "600", style: "normal" },
+    { path: "../public/fonts/MiSans-Bold.ttf",        weight: "700", style: "normal" },
+    { path: "../public/fonts/MiSans-Heavy.ttf",       weight: "900", style: "normal" },
   ],
   variable: "--font-misans",
   display: "swap",
   preload: true,
   fallback: ["system-ui", "sans-serif"],
+});
+
+// Khmer system font stack — MiSans may not have full Khmer glyph coverage,
+// so Khmer text falls back to OS-native Khmer fonts.
+const khmer = localFont({
+  src: [
+    { path: "../public/fonts/MiSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../public/fonts/MiSans-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-khmer",
+  display: "swap",
+  preload: false,
+  fallback: ["Noto Sans Khmer", "Khmer OS", "Leelawadee UI", "sans-serif"],
 });
 
 // Runs before paint to set the theme from saved preference or the OS,
@@ -32,7 +50,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={misans.variable}
+      className={`${misans.variable} ${khmer.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
