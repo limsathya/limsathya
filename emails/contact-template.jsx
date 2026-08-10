@@ -69,8 +69,7 @@ function InfoRow({ label, value }) {
 
 const body = {
   backgroundColor: "#0b1020",
-  fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+  fontFamily: '"MiSans", sans-serif',
   padding: "32px 16px",
 };
 

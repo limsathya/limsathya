@@ -2,33 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  /* Make form elements inherit the body font so custom fonts apply everywhere */
-  input,
-  textarea,
-  button,
-  select,
-  optgroup {
-    font-family: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
-  }
-}
-
-/* ============================================================
-   KHMER SCRIPT — FALLBACK
-   When MiSans lacks a Khmer glyph the browser falls through
-   the stack to OS-native Khmer fonts (Noto Sans Khmer, etc.).
-   ============================================================ */
-@font-face {
-  font-family: "Khmer Fallback";
-  src: local("Noto Sans Khmer"), local("Khmer OS"), local("Leelawadee UI");
-  font-display: swap;
-  unicode-range: U+1780-17FF, U+19E0-19FF;
-}
-
-/* ============================================================ */
-
 /* ============================================================
    THEME TOKENS
    Default = dark ("beacon at night").

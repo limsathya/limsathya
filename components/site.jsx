@@ -24,20 +24,20 @@ import {
   MapPin,
   Clock,
   Globe,
-  Github,
-  Instagram,
-  Linkedin,
-  Facebook,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  FacebookIcon,
   Send,
   ArrowUpRight,
 } from "lucide-react";
 
 const FOCUS_ICONS = [Stethoscope, Code2, Camera, Clapperboard];
 const SOCIAL_ICONS = {
-  github: Github,
-  instagram: Instagram,
-  linkedin: Linkedin,
-  facebook: Facebook,
+  github: GithubIcon,
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+  facebook: FacebookIcon,
   telegram: Send,
 };
 
@@ -148,7 +148,7 @@ export default function Site() {
             >
               <span className="font-sc text-paper">陕炎烽</span>
               <span className="mx-2.5 text-mist-dim">·</span>
-              <span className="font-khmer text-paper">សាន្ត លីមសត្យា</span>
+              <span className="font-khmer text-paper" lang="km">សាន្ត លីមសត្យា</span>
             </p>
 
             <p
@@ -212,7 +212,13 @@ export default function Site() {
               <h2 className="font-display text-3xl text-paper sm:text-4xl">
                 {t.profile.heading}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-paper/90">{t.profile.lede}</p>
+              <p className="mt-5 text-lg leading-relaxed text-paper/90">
+                {t.profile.ledeAfter ? (
+                  <>{t.profile.lede}<span className="font-khmer" lang="km">{t.profile.khmerName}</span>{t.profile.ledeAfter}</>
+                ) : (
+                  t.profile.lede
+                )}
+              </p>
               <p className="mt-4 leading-relaxed text-mist">{t.profile.body}</p>
             </div>
           </div>
@@ -298,7 +304,7 @@ export default function Site() {
                   style={revealClasses(langIn, i + 1, "scale").style}
                 >
                   <CardContent className="p-6">
-                    <div className={cn("text-3xl text-accentInk", lang.face)}>{lang.greet}</div>
+                    <div className={cn("text-3xl text-accentInk", lang.face)} {...(lang.face === "font-khmer" ? { lang: "km" } : {})}>{lang.greet}</div>
                     <h3 className="mt-4 font-display text-lg text-paper">{lang.name}</h3>
                     <p className="mt-1 font-mono text-xs uppercase tracking-wider text-accentInk">
                       {lang.note}
