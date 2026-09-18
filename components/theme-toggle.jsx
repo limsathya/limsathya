@@ -16,7 +16,7 @@ export default function ThemeToggle() {
       onClick={cycleTheme}
       aria-label={text}
       title={text}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-mist transition-colors hover:border-ember/50 hover:text-accentInk"
+      className="glass-control inline-flex h-9 w-9 items-center justify-center rounded-full text-mist transition-colors hover:border-ember/50 hover:text-accentInk"
     >
       <Icon className="h-[18px] w-[18px]" />
     </button>

@@ -2,6 +2,11 @@
 const nextConfig = {
   // Transpile @react-email components for server-side usage in API routes
   transpilePackages: ["@react-email/components"],
+  // Tree-shake barrel imports (lucide-react ships hundreds of icons;
+  // this rewrites imports to per-module paths at build time)
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   async headers() {
     return [
       {

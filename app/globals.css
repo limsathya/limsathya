@@ -75,47 +75,57 @@
 }
 
 /* ============================================================
-   THEME TOKENS
-   Default = dark ("beacon at night").
-   Light tokens apply when the system prefers light (no manual
-   override) OR when data-theme="light" is set explicitly.
+   THEME TOKENS — Apple-neutral system
+   Dark  : #000 base / #161617 / #1D1D1F surfaces, #F5F5F7 text
+   Light : #FBFBFD base / #F5F5F7 bands, #1D1D1F text
+   Single accent (ember) reserved for CTAs and key highlights.
    ============================================================ */
 
 :root {
   /* themeable surfaces + text (space-separated RGB channels) */
-  --bg: 11 16 32;
-  --surface: 18 26 48;
-  --surface-2: 28 39 70;
-  --line: 36 49 86;
-  --paper: 243 238 228;
-  --foreground: 232 230 223;
-  --mist: 147 164 196;
-  --mist-dim: 126 142 178;
+  --bg: 0 0 0;
+  --surface: 22 22 23;
+  --surface-2: 29 29 31;
+  --line: 66 66 70;
+  --paper: 245 245 247;
+  --foreground: 245 245 247;
+  --mist: 134 134 139;
+  --mist-dim: 110 110 115;
   --accent-ink: 246 162 60;
 
   /* hero name gradient stops */
-  --hero-a: #ffe3b0;
+  --hero-a: #ffdfae;
   --hero-b: #f6a23c;
   --hero-c: #e5552e;
 
+  /* Apple glass surfaces (dark) */
+  --glass-bg: 22 22 23;
+  --glass-alpha: 0.72;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.14;
+  --glass-highlight: 0.12;
+  --glass-sheen: 0.08;
+  --glass-shadow: 0 12px 40px -12px rgba(0 0 0 / 0.6);
+  --nav-shadow: 0 8px 24px -12px rgba(0 0 0 / 0.4);
+
   /* shadcn semantic tokens (dark) */
-  --background: #0b1020;
-  --card: #121a30;
-  --card-foreground: #f3eee4;
-  --popover: #121a30;
-  --popover-foreground: #f3eee4;
+  --background: #000000;
+  --card: #161617;
+  --card-foreground: #f5f5f7;
+  --popover: #1d1d1f;
+  --popover-foreground: #f5f5f7;
   --primary: #f6a23c;
   --primary-foreground: #1a0f06;
-  --secondary: #1c2746;
-  --secondary-foreground: #e8e6df;
-  --muted: #121a30;
-  --muted-foreground: #93a4c4;
-  --accent: #1c2746;
-  --accent-foreground: #ffe3b0;
+  --secondary: #1d1d1f;
+  --secondary-foreground: #f5f5f7;
+  --muted: #1d1d1f;
+  --muted-foreground: #86868b;
+  --accent: #1d1d1f;
+  --accent-foreground: #f6a23c;
   --destructive: #e5552e;
   --destructive-foreground: #1a0f06;
-  --border: #243156;
-  --input: #243156;
+  --border: #2c2c2e;
+  --input: #2c2c2e;
   --ring: #f6a23c;
   --radius: 0.75rem;
 
@@ -124,37 +134,47 @@
 
 /* ---- LIGHT tokens (shared by system-light fallback + manual light) ---- */
 :root[data-theme="light"] {
-  --bg: 245 239 228;
-  --surface: 252 250 245;
-  --surface-2: 240 233 219;
-  --line: 226 216 200;
-  --paper: 27 36 64;
-  --foreground: 42 51 80;
-  --mist: 94 107 134;
-  --mist-dim: 138 147 168;
+  --bg: 251 251 253;
+  --surface: 245 245 247;
+  --surface-2: 255 255 255;
+  --line: 210 210 215;
+  --paper: 29 29 31;
+  --foreground: 29 29 31;
+  --mist: 134 134 139;
+  --mist-dim: 110 110 115;
   --accent-ink: 168 64 28;
 
-  --hero-a: #e5552e;
-  --hero-b: #c2410c;
-  --hero-c: #9a3412;
+  --hero-a: #c2410c;
+  --hero-b: #9a3412;
+  --hero-c: #7c2d12;
 
-  --background: #f5efe4;
-  --card: #fcfaf5;
-  --card-foreground: #1b2440;
-  --popover: #fcfaf5;
-  --popover-foreground: #1b2440;
+  /* Apple glass surfaces (light) */
+  --glass-bg: 255 255 255;
+  --glass-alpha: 0.72;
+  --glass-border: 0 0 0;
+  --glass-border-alpha: 0.1;
+  --glass-highlight: 0.5;
+  --glass-sheen: 0.4;
+  --glass-shadow: 0 12px 40px -16px rgba(0 0 0 / 0.12);
+  --nav-shadow: 0 8px 24px -16px rgba(0 0 0 / 0.12);
+
+  --background: #fbfbfd;
+  --card: #ffffff;
+  --card-foreground: #1d1d1f;
+  --popover: #ffffff;
+  --popover-foreground: #1d1d1f;
   --primary: #f6a23c;
   --primary-foreground: #1a0f06;
-  --secondary: #f0e9db;
-  --secondary-foreground: #2a3350;
-  --muted: #f0e9db;
-  --muted-foreground: #5e6b86;
-  --accent: #f0e9db;
+  --secondary: #f5f5f7;
+  --secondary-foreground: #1d1d1f;
+  --muted: #f5f5f7;
+  --muted-foreground: #86868b;
+  --accent: #f5f5f7;
   --accent-foreground: #a8401c;
   --destructive: #e5552e;
   --destructive-foreground: #ffffff;
-  --border: #e2d8c8;
-  --input: #e2d8c8;
+  --border: #d2d2d7;
+  --input: #d2d2d7;
   --ring: #f6a23c;
 
   color-scheme: light;
@@ -163,37 +183,46 @@
 /* System prefers light AND user hasn't forced dark → use light tokens */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: 245 239 228;
-    --surface: 252 250 245;
-    --surface-2: 240 233 219;
-    --line: 226 216 200;
-    --paper: 27 36 64;
-    --foreground: 42 51 80;
-    --mist: 94 107 134;
-    --mist-dim: 138 147 168;
+    --bg: 251 251 253;
+    --surface: 245 245 247;
+    --surface-2: 255 255 255;
+    --line: 210 210 215;
+    --paper: 29 29 31;
+    --foreground: 29 29 31;
+    --mist: 134 134 139;
+    --mist-dim: 110 110 115;
     --accent-ink: 168 64 28;
 
-    --hero-a: #e5552e;
-    --hero-b: #c2410c;
-    --hero-c: #9a3412;
+    --hero-a: #c2410c;
+    --hero-b: #9a3412;
+    --hero-c: #7c2d12;
 
-    --background: #f5efe4;
-    --card: #fcfaf5;
-    --card-foreground: #1b2440;
-    --popover: #fcfaf5;
-    --popover-foreground: #1b2440;
+    /* Apple glass surfaces (system light) */
+    --glass-bg: 255 255 255;
+    --glass-alpha: 0.72;
+    --glass-border: 0 0 0;
+    --glass-border-alpha: 0.1;
+    --glass-highlight: 0.5;
+    --glass-sheen: 0.4;
+    --glass-shadow: 0 12px 40px -16px rgba(0 0 0 / 0.12);
+
+    --background: #fbfbfd;
+    --card: #ffffff;
+    --card-foreground: #1d1d1f;
+    --popover: #ffffff;
+    --popover-foreground: #1d1d1f;
     --primary: #f6a23c;
     --primary-foreground: #1a0f06;
-    --secondary: #f0e9db;
-    --secondary-foreground: #2a3350;
-    --muted: #f0e9db;
-    --muted-foreground: #5e6b86;
-    --accent: #f0e9db;
+    --secondary: #f5f5f7;
+    --secondary-foreground: #1d1d1f;
+    --muted: #f5f5f7;
+    --muted-foreground: #86868b;
+    --accent: #f5f5f7;
     --accent-foreground: #a8401c;
     --destructive: #e5552e;
     --destructive-foreground: #ffffff;
-    --border: #e2d8c8;
-    --input: #e2d8c8;
+    --border: #d2d2d7;
+    --input: #d2d2d7;
     --ring: #f6a23c;
 
     color-scheme: light;
@@ -204,39 +233,37 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Apple base with faint ambient light fields — nearly flat to the
+   eye, but they give frosted-glass surfaces real color to refract. */
 body {
   background-color: rgb(var(--bg));
   background-image:
-    radial-gradient(1100px 560px at 50% -10%, rgba(36, 49, 86, 0.85), transparent 70%),
-    radial-gradient(900px 500px at 90% 110%, rgba(229, 85, 46, 0.1), transparent 60%),
-    url("/noise-dark.svg");
+    radial-gradient(900px 480px at 50% -8%, rgb(246 162 60 / 0.07), transparent 70%),
+    radial-gradient(1000px 620px at 85% 108%, rgb(120 144 180 / 0.08), transparent 65%);
   background-attachment: fixed;
 }
 
-/* Lighter ambient wash for light theme */
-:root[data-theme="light"] body,
-.light-bg body {
+:root[data-theme="light"] body {
   background-image:
-    radial-gradient(1100px 560px at 50% -10%, rgba(246, 162, 60, 0.12), transparent 70%),
-    radial-gradient(900px 520px at 90% 110%, rgba(229, 85, 46, 0.07), transparent 60%),
-    url("/noise-light.svg");
+    radial-gradient(900px 480px at 50% -8%, rgb(246 162 60 / 0.08), transparent 70%),
+    radial-gradient(1000px 620px at 85% 108%, rgb(168 64 28 / 0.05), transparent 65%);
 }
+
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) body {
     background-image:
-      radial-gradient(1100px 560px at 50% -10%, rgba(246, 162, 60, 0.12), transparent 70%),
-      radial-gradient(900px 520px at 90% 110%, rgba(229, 85, 46, 0.07), transparent 60%),
-      url("/noise-light.svg");
+      radial-gradient(900px 480px at 50% -8%, rgb(246 162 60 / 0.08), transparent 70%),
+      radial-gradient(1000px 620px at 85% 108%, rgb(168 64 28 / 0.05), transparent 65%);
   }
 }
 
 section {
-  scroll-margin-top: 84px;
+  scroll-margin-top: 76px;
 }
 
 ::selection {
-  background: rgba(246, 162, 60, 0.25);
-  color: #ffe3b0;
+  background: rgb(246 162 60 / 0.35);
+  color: inherit;
 }
 
 /* Hero name — themeable gradient text */
@@ -245,6 +272,90 @@ section {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* ============================================================
+   APPLE LAYOUT UTILITIES
+   ============================================================ */
+
+/* Alternating story band (#161617 dark / #F5F5F7 light) —
+   slightly translucent so ambient fields bleed through the glass. */
+.section-band {
+  background-color: rgb(var(--surface) / 0.82);
+}
+
+/* Slim frosted navigation bar (apple.com pattern) —
+   denser fill for legibility over any content, themed soft
+   shadow, and its own composited layer to keep scroll cheap. */
+.nav-glass {
+  background-color: rgb(var(--glass-bg) / 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  box-shadow: var(--nav-shadow);
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   APPLE GLASS — frosted translucency utilities
+   Layered: tinted translucent fill + backdrop blur/saturate +
+   hairline border + top specular highlight + soft shadow.
+   ============================================================ */
+
+.glass {
+  background-color: rgb(var(--glass-bg) / var(--glass-alpha));
+  background-image: linear-gradient(135deg, rgba(255 255 255 / var(--glass-sheen)), rgba(255 255 255 / 0) 45%);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  box-shadow:
+    inset 0 1px 0 0 rgba(255 255 255 / var(--glass-highlight)),
+    var(--glass-shadow);
+}
+
+/* Denser material for overlays, dialogs, floating bars */
+.glass-strong {
+  background-color: rgb(var(--glass-bg) / calc(var(--glass-alpha) + 0.2));
+  background-image: linear-gradient(135deg, rgba(255 255 255 / var(--glass-sheen)), rgba(255 255 255 / 0) 45%);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  box-shadow:
+    inset 0 1px 0 0 rgba(255 255 255 / var(--glass-highlight)),
+    var(--glass-shadow);
+}
+
+/* Capsule variant for floating pills — lighter shadow, pill radius */
+.glass-pill {
+  background-color: rgb(var(--glass-bg) / calc(var(--glass-alpha) + 0.05));
+  background-image: linear-gradient(135deg, rgba(255 255 255 / var(--glass-sheen)), rgba(255 255 255 / 0) 45%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  box-shadow:
+    inset 0 1px 0 0 rgba(255 255 255 / var(--glass-highlight)),
+    0 8px 28px -12px rgba(0 0 0 / 0.35);
+}
+
+/* Interactive glass control (icon buttons, social links) */
+.glass-control {
+  background-color: rgb(var(--glass-bg) / var(--glass-alpha));
+  background-image: linear-gradient(135deg, rgba(255 255 255 / var(--glass-sheen)), rgba(255 255 255 / 0) 50%);
+  backdrop-filter: blur(16px) saturate(170%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
+  box-shadow: inset 0 1px 0 0 rgba(255 255 255 / var(--glass-highlight));
+}
+
+/* Graceful fallback when backdrop-filter is unsupported */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong,
+  .glass-pill,
+  .glass-control,
+  .nav-glass {
+    background-color: rgb(var(--glass-bg) / 0.94);
+  }
 }
 
 /* Smooth crossfade applied only during a manual theme switch */

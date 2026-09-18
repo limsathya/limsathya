@@ -9,10 +9,11 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-onAccent hover:brightness-110",
         ember:
-          "bg-gradient-to-br from-ember to-flame text-onAccent font-semibold shadow-[0_10px_30px_-12px_rgba(246,162,60,0.6)] hover:brightness-105 hover:-translate-y-px",
+          "bg-ember text-onAccent font-semibold duration-300 hover:bg-ember/90 hover:scale-[1.02] active:scale-[0.98]",
         outline:
-          "border border-line bg-transparent text-foreground hover:border-ember/50 hover:text-accentInk hover:bg-ember/5",
+          "glass-control text-foreground hover:border-ember/50 hover:text-accentInk hover:bg-ember/5",
         ghost: "bg-transparent text-foreground hover:bg-ember/5 hover:text-accentInk",
+        link: "bg-transparent px-0 text-accentInk hover:underline underline-offset-4",
       },
       size: {
         default: "px-5 py-2.5",
