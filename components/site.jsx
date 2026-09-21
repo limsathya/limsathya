@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/components/language-provider";
 import { siteConfig } from "@/lib/site-config";
 import { locales } from "@/lib/i18n";
@@ -69,6 +69,46 @@ export default function Site() {
     return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
+  /* Scroll-driven motion — nav deepening + hero parallax/fade.
+     Styles are mutated directly inside a rAF-throttled passive
+     listener: zero React re-renders, compositor-only properties.
+     Disabled entirely under prefers-reduced-motion (nav state
+     still applies, it conveys position, not decoration). */
+  const navRef = useRef(null);
+  const glowRef = useRef(null);
+  const heroContentRef = useRef(null);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const y = window.scrollY;
+      navRef.current?.classList.toggle("nav-scrolled", y > 8);
+      if (reduce) return;
+      const p = Math.min(y / 480, 1);
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(-50%, calc(-50% + ${y * 0.12}px))`;
+      }
+      if (heroContentRef.current) {
+        heroContentRef.current.style.transform = `translate3d(0, ${p * -36}px, 0)`;
+        heroContentRef.current.style.opacity = String(1 - p * 0.35);
+      }
+    };
+
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -99,7 +139,7 @@ export default function Site() {
 
       {/* ===================== NAV — slim frosted bar ===================== */}
       <header className="sticky top-0 z-50">
-        <nav className="nav-glass" aria-label="Primary">
+        <nav className="nav-glass" aria-label="Primary" ref={navRef}>
           <div className="mx-auto flex h-12 max-w-5xl items-center justify-between px-5">
             <a
               href="#top"
@@ -198,9 +238,10 @@ export default function Site() {
         <section className="relative overflow-hidden px-5 pb-24 pt-24 text-center sm:pb-32 sm:pt-36">
           <div
             aria-hidden="true"
+            ref={glowRef}
             className="pointer-events-none absolute left-1/2 top-[38%] h-[min(560px,90vw)] w-[min(560px,90vw)] -translate-x-1/2 -translate-y-1/2 animate-breathe rounded-full blur-3xl will-change-[opacity] bg-[radial-gradient(closest-side,rgba(246,162,60,0.20),rgba(229,85,46,0.08)_55%,transparent_72%)]"
           />
-          <div className="relative mx-auto max-w-4xl">
+          <div className="relative mx-auto max-w-4xl" ref={heroContentRef}>
             <h1
               className="animate-rise font-display font-semibold leading-[1.02] tracking-[-0.03em] text-[clamp(3rem,10vw,6.5rem)]"
               style={{ animationDelay: "0ms" }}

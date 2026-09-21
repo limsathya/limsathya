@@ -294,6 +294,15 @@ section {
   border-bottom: 1px solid rgb(var(--glass-border) / var(--glass-border-alpha));
   box-shadow: var(--nav-shadow);
   transform: translateZ(0);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Scroll-linked state: material deepens once the page moves */
+.nav-scrolled {
+  background-color: rgb(var(--glass-bg) / 0.88);
+  box-shadow:
+    var(--nav-shadow),
+    0 2px 16px -4px rgba(0 0 0 / 0.25);
 }
 
 /* ============================================================

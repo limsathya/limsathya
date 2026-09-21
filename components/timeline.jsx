@@ -1,16 +1,34 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { useScrollReveal, revealClasses } from "@/lib/use-scroll-reveal";
 
 export default function Timeline({ items, present }) {
+  const [ref, inView] = useScrollReveal();
+
   return (
-    <ol className="relative ml-1 border-l border-line">
+    <ol ref={ref} className="relative ml-1">
+      {/* The spine draws itself top-to-bottom as the list enters view */}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "absolute left-0 top-0 h-full w-px origin-top bg-line transition-transform duration-1000 ease-out",
+          inView ? "scale-y-100" : "scale-y-0"
+        )}
+      />
       {items.map((item, i) => {
         const when =
           item.when ||
           (item.start
             ? `${item.start} – ${present}`
             : "");
+        const reveal = revealClasses(inView, i, "up");
         return (
-          <li key={i} className="relative pl-8 pb-9 last:pb-0">
+          <li
+            key={i}
+            className={cn("relative pb-9 pl-8 last:pb-0", reveal.className)}
+            style={reveal.style}
+          >
             <span
               className={cn(
                 "absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full",
