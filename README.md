@@ -1,157 +1,84 @@
-# Limsathya San — Personal Website
+# Limsathya San — Profile Information
 
-A trilingual (English / 中文 / ខ្មែរ) personal website built with **Next.js (App Router)**,
-**Tailwind CSS**, and **shadcn-style** UI components, with a **Resend**-powered contact form.
-
----
-
-## Requirements
-
-- **Node.js 18.17+** (LTS recommended)
-- npm (ships with Node)
+*Compiled from public sources: GitHub (`github.com/limsathya`) and personal website (`limsathya.com`).*
 
 ---
 
-## 1. Install
+## 👤 Personal Overview
 
-```bash
-# from the project folder
-npm install
-```
-
-## 2. Configure environment variables
-
-```bash
-cp .env.example .env.local
-```
-
-Then open `.env.local` and fill in your values. See the table below.
-
-## 3. Run locally
-
-```bash
-npm run dev
-```
-
-Open http://localhost:3000
+**Limsathya San** (also known as **陕炎烽** in Chinese and **សាន្ត លីមសត្យា** in Khmer) is a Cambodian medical student based in Kunming, China. His work and interests sit at the intersection of four main areas: **Medicine, Software, Photography, and Content creation**. He is passionate about languages and building things for the web.
 
 ---
 
-## Environment variables
+## 🎓 Education History
 
-| Variable | Public? | What it's for |
-| --- | --- | --- |
-| `RESEND_API_KEY` | **Secret** | Your Resend API key — powers the contact form |
-| `CONTACT_TO_EMAIL` | Secret | Where contact messages are delivered |
-| `CONTACT_FROM_EMAIL` | Secret | The "From" address (must be on a verified domain in production) |
-| `NEXT_PUBLIC_SITE_NAME` | Public | Display name in the nav/footer |
-| `NEXT_PUBLIC_LOGO_URL` | Public | Path/URL to your logo (default `/logo.svg`) |
-| `NEXT_PUBLIC_PROFILE_IMAGE_URL` | Public | Path/URL to your profile photo (default `/profile.svg`) |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | Public | Email shown on the page |
-| `NEXT_PUBLIC_CONTACT_PHONE_KH` | Public | Cambodia phone number |
-| `NEXT_PUBLIC_CONTACT_PHONE_CN` | Public | China phone number |
-| `NEXT_PUBLIC_SOCIAL_GITHUB` | Public | GitHub URL (leave blank to hide) |
-| `NEXT_PUBLIC_SOCIAL_INSTAGRAM` | Public | Instagram URL (leave blank to hide) |
-| `NEXT_PUBLIC_SOCIAL_LINKEDIN` | Public | LinkedIn URL (leave blank to hide) |
-| `NEXT_PUBLIC_SOCIAL_FACEBOOK` | Public | Facebook URL (leave blank to hide) |
-| `NEXT_PUBLIC_SOCIAL_TELEGRAM` | Public | Telegram URL (leave blank to hide) |
+His educational journey has been diverse, moving from Cambodia to China and shifting from business to medicine:
 
-> Anything beginning with `NEXT_PUBLIC_` is bundled into the browser. Keep the Resend key
-> and the `CONTACT_*` values **without** that prefix so they stay server-only.
-> Any social link left blank simply won't appear on the site.
+| Period | Institution | Field | Notes |
+|--------|-------------|-------|-------|
+| Sep 2021 – Dec 2022 | Sovannaphumi School, Siem Reap, Cambodia | High School | Completed high school |
+| Jan 2023 | Build Bright University | Business Administration | "A brief first chapter" |
+| Sep 2024 – Aug 2025 | Tongji University, Shanghai, China | Pre-Medicine | Preparatory program |
+| Sep 2025 – Present | **Kunming Medical University** | Doctor of Medicine (M.D.) | Currently enrolled |
 
 ---
 
-## Setting up Resend (contact form)
+## 💼 Experience & Volunteer Work
 
-1. Create an account at <https://resend.com>.
-2. Under **API Keys**, create a key and paste it into `RESEND_API_KEY`.
-3. Under **Domains**, add `limsathya.com` and add the DNS records Resend gives you.
-   Once verified, set `CONTACT_FROM_EMAIL` to an address on that domain, e.g.
-   `Limsathya San <noreply@limsathya.com>`.
+Beyond his studies, Limsathya is active in community and international events:
 
-**Testing without a verified domain:** you can temporarily set
-`CONTACT_FROM_EMAIL="Limsathya San <onboarding@resend.dev>"`. Resend only delivers messages
-from that shared sender to the email address of your own Resend account — fine for a quick
-test, but verify your domain before going live.
+- **Volunteer**, Union of Youth Federations of Cambodia (Mar 2022 – Present) — involved in administration in Siem Reap and Phnom Penh.
+- **Liaison Officer**, 32nd SEA Games, Phnom Penh, Cambodia (May 2023).
+- **Member**, Association of Cambodian Students in China (ACSC) (Sep 2025 – Present).
 
 ---
 
-## Replacing the placeholder assets
+## 🛠️ Technical Skills & Projects
 
-- **Profile photo:** drop your image into `public/` (e.g. `public/profile.jpg`) and set
-  `NEXT_PUBLIC_PROFILE_IMAGE_URL="/profile.jpg"`.
-- **Logo:** replace `public/logo.svg` (or point `NEXT_PUBLIC_LOGO_URL` at a new file).
+Limsathya is a self-taught software developer who builds tools and interfaces, learning by shipping side projects.
 
----
+### Core Project: Personal Website (`limsathya.com`)
 
-## Editing the text / translations
+The `README.md` on his GitHub profile is dedicated to his personal website, which provides insight into his technical stack and approach:
 
-All copy lives in **`lib/i18n.js`**, grouped by language (`en`, `zh`, `km`).
-The Chinese and Khmer were drafted as a starting point — since you're fluent in both,
-please read through and adjust the wording to sound exactly the way you'd say it.
+- **Architecture**: A **trilingual** (English, Chinese, Khmer) website built with **Next.js (App Router)**, **Tailwind CSS**, and shadcn-style UI components.
+- **Features**: Includes a contact form powered by **Resend**.
+- **Customization**: Designed to be configurable via environment variables for social links (GitHub, Instagram, LinkedIn, Facebook, Telegram) and contact details.
+- **Localization**: All text and translations are managed in a single file (`lib/i18n.js`), grouped by language.
 
-The language switcher (top-right) remembers the visitor's last choice.
+### Tech Stack
 
----
-
-## Appearance (light & dark)
-
-The site automatically follows the visitor's device setting — light or dark — on **both mobile
-and desktop**, and updates live if they switch their system theme. A toggle in the top-right
-corner lets anyone override it: it cycles **System → Light → Dark** and remembers the choice.
-There's no flash of the wrong theme on load (an inline script sets it before first paint).
+- **Frontend**: Next.js, React, Tailwind CSS, JavaScript, TypeScript
+- **Tools & Services**: Resend (email), shadcn/ui components
+- **Languages**: Khmer (fluent), Chinese (fluent), English (intermediate)
 
 ---
 
-## Deploying to Vercel
+## 🗣️ Languages
 
-1. Push this project to a GitHub repository.
-2. Go to <https://vercel.com>, click **Add New → Project**, and import the repo.
-3. In **Settings → Environment Variables**, add **every** variable from your `.env.local`
-   (both the `NEXT_PUBLIC_*` ones and the secret `RESEND_API_KEY` / `CONTACT_*` ones).
-4. Click **Deploy**. To use `limsathya.com`, add it under **Settings → Domains**.
+He is multilingual and actively curious about languages:
 
----
-
-## Project structure
-
-```
-limsathya-website/
-├─ app/
-│  ├─ api/contact/route.js   # Resend contact endpoint (server)
-│  ├─ globals.css            # theme tokens + base styles
-│  ├─ layout.jsx             # fonts, metadata, language provider
-│  └─ page.jsx               # renders <Site/>
-├─ components/
-│  ├─ ui/                    # button, card, badge, separator, input, textarea, label
-│  ├─ beacon-mark.jsx        # the flame/beacon logo mark
-│  ├─ contact-form.jsx       # trilingual form → /api/contact
-│  ├─ language-provider.jsx  # language context + persistence
-│  └─ site.jsx               # the full page
-├─ lib/
-│  ├─ i18n.js                # EN / 中文 / ខ្មែរ content
-│  ├─ site-config.js         # reads env (socials, logo, profile, contact)
-│  └─ utils.js               # cn() helper
-├─ public/                   # logo.svg, profile.svg (replace these)
-├─ .env.example
-└─ tailwind.config.js
-```
-
-## A note on the design
-
-The whole site is a dark "night," and your name is the lit beacon at the top — a nod to the
-**烽** (signal-fire) in your Chinese name, and to a path that has crossed borders
-(Phnom Penh → Shanghai → Kunming) and disciplines (business → medicine, plus software,
-photography, and content).
+- **Khmer**: Fluent (mother tongue)
+- **Chinese**: Fluent
+- **English**: Intermediate
+- He also mentions always being in the process of learning "a few more."
 
 ---
 
-## Scripts
+## 📬 Contact & Availability
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the dev server |
-| `npm run build` | Production build |
-| `npm run start` | Run the production build |
-| `npm run lint` | Lint the project |
+- **Location**: Kunming, China
+- **Timezone**: Phnom Penh (GMT+7)
+- **Office Hours**: Monday – Friday (9:00 – 17:00), Saturday (10:00 – 15:00). Closed on Sunday.
+- **Website**: [limsathya.com](https://limsathya.com)
+- **GitHub**: [github.com/limsathya](https://github.com/limsathya)
+
+---
+
+## 💡 Summary
+
+> Limsathya San is a Cambodian medical student in Kunming, China. His work spans **medicine, software, photography, and content creation**. He is currently pursuing an M.D. at Kunming Medical University, having previously studied pre-medicine at Tongji University and business at Build Bright University. A self-taught developer, he builds for the web using **Next.js and Tailwind CSS**, and is fluent in **Khmer, Chinese, and English**.
+
+---
+
+*Last updated: October 2026*
